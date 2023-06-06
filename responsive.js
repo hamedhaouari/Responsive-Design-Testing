@@ -1,5 +1,14 @@
 var defaultURL = 'https://mobile-app.mczen-technologies.com/'; //<---- CHANGE TO YOUR WEBSITE URL
-
+function changed(){
+ // loadPage('' , $('#url input[type=text]').val());
+  document.getElementById("inner").style.MozTransform = "scale("+1 * ( document.getElementById("url1").value / 100)+")";
+  //document.getElementById("inner").style.MozTransform = 973 * ( document.getElementById("url1").value / 100)+"px";
+  /*document.getElementById("thediv").style.width = 480 * (document.getElementById("url1").value / 100)+"px";
+  document.getElementById("theiframe").style.height = 926 * ( document.getElementById("url1").value / 100)+"px";
+  document.getElementById("theiframe").style.width = 428 * (  document.getElementById("url1").value / 100)+"px";
+  document.getElementById("theiframe").style.borderRadius  = 50 * (  document.getElementById("url1").value / 100)+"px";*/
+  
+}
 //show loading graphic
 function showLoader(id) {
   $('#' + id + ' img').fadeIn('slow');
@@ -9,9 +18,7 @@ function showLoader(id) {
 function hideLoader(id) {
   $('#' + id + ' img').fadeOut('slow');
 }
-function changed(){
-  loadPage('' , $('#url input[type=text]').val());
-}
+
 //function to check load state of each frame
 function allLoaded(){
   var results = [];
@@ -20,7 +27,8 @@ function allLoaded(){
   });
   var result = (results.length > 0) ? false : true;
   return result;
-};
+}
+
 
 function loadPage($frame, url) {
   if ( url.substr(0,7) !== 'http://' && url.substr(0,8) !== 'https://' && url.substr(0, 7) !== 'file://' ) {
@@ -38,7 +46,11 @@ $('.frame').each(function(){showLoader($(this).attr('id'))});
 $(document).ready(function(){
 
   loadPage('', defaultURL);
-
+   $('#url1').change(function() {
+	   console.log("llll");
+	 changed();
+   loadPage('', defaultURL);
+}); 
   //query string
   var qsArray = window.location.href.split('?');
   var qs = qsArray[qsArray.length-1];
