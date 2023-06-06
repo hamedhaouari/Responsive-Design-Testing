@@ -85,7 +85,9 @@ $(document).ready(function(){
     loadPage('' , $('#url input[type=text]').val());
     return false;
   });
-
+  function changed(){
+    loadPage('' , $('#url input[type=text]').val());
+  }
   //when frame loads
   $('iframe').load(function(){
 
