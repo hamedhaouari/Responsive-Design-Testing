@@ -1,4 +1,4 @@
-var defaultURL = 'mattkersley.com'; //<---- CHANGE TO YOUR WEBSITE URL
+var defaultURL = 'https://mobile-app.mczen-technologies.com/'; //<---- CHANGE TO YOUR WEBSITE URL
 
 //show loading graphic
 function showLoader(id) {
@@ -9,7 +9,9 @@ function showLoader(id) {
 function hideLoader(id) {
   $('#' + id + ' img').fadeOut('slow');
 }
-
+function changed(){
+  loadPage('' , $('#url input[type=text]').val());
+}
 //function to check load state of each frame
 function allLoaded(){
   var results = [];
@@ -22,7 +24,7 @@ function allLoaded(){
 
 function loadPage($frame, url) {
   if ( url.substr(0,7) !== 'http://' && url.substr(0,8) !== 'https://' && url.substr(0, 7) !== 'file://' ) {
-    url = 'http://'+url;
+    url = 'https://'+url;
   }
   $('iframe').not($frame).each(function(){showLoader($(this).parent().attr('id'));})
   $('iframe').not($frame).data('loaded', false);
@@ -85,9 +87,7 @@ $(document).ready(function(){
     loadPage('' , $('#url input[type=text]').val());
     return false;
   });
-  function changed(){
-    loadPage('' , $('#url input[type=text]').val());
-  }
+  
   //when frame loads
   $('iframe').load(function(){
 
