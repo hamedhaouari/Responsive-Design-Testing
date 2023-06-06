@@ -47,9 +47,9 @@ $(document).ready(function(){
 
   loadPage('', defaultURL);
    $('#url1').change(function() {
-	   console.log("llll");
+	   
 	 changed();
-   loadPage('', defaultURL);
+  // loadPage('', defaultURL);
 }); 
   //query string
   var qsArray = window.location.href.split('?');
